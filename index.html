@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Alert</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #050507;
+            color: white;
+            font-family: "Courier New", monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .terminal {
+            width: 90%;
+            max-width: 650px;
+            background: #09090d;
+            border: 1px solid #ff3b6b;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 0 40px rgba(255, 59, 107, 0.25);
+            text-align: center;
+        }
+
+        .top {
+            color: #888;
+            font-size: 13px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .alert {
+            color: #ff3b6b;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 25px 0;
+            text-shadow: 0 0 10px #ff3b6b;
+        }
+
+        .info {
+            color: #aaa;
+            line-height: 1.8;
+            text-align: left;
+            margin: 25px auto;
+            max-width: 450px;
+        }
+
+        .critical {
+            color: #ff3b6b;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            border: 1px solid #ff3b6b;
+            border-radius: 7px;
+            background: transparent;
+            color: #ff3b6b;
+            font-family: "Courier New", monospace;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff3b6b;
+            color: white;
+            box-shadow: 0 0 25px #ff3b6b;
+        }
+
+        /* PAGE ANNIVERSAIRE */
+
+        #success {
+            display: none;
+        }
+
+        .success-title {
+            color: #ff4f91;
+            font-size: 35px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 15px #ff4f91;
+        }
+
+        .arabic {
+            font-size: 38px;
+            margin: 30px 0;
+            direction: rtl;
+        }
+
+        .message {
+            color: #ddd;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .happy {
+            color: #ff4f91;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        .heart {
+            position: fixed;
+            top: -30px;
+            font-size: 25px;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PHISHING PAGE -->
+
+    <div class="terminal" id="phishing">
+
+        <div class="top">
+            [ SECURITY SYSTEM ]<br>
+            ━━━━━━━━━━━━━━━━━━━━━
+        </div>
+
+        <div class="alert">
+            ⚠️ PHISHING ALERT — HIGH SEVERITY
+        </div>
+
+        <div class="info">
+
+            &gt; Scanning target...<br>
+            &gt; Suspicious activity detected...<br>
+            &gt; Attack vector: <span class="critical">SOCIAL ENGINEERING</span><br>
+            &gt; Threat level: <span class="critical">CRITICAL</span><br>
+            &gt; Birthday.exe detected 🎂<br>
+            &gt; Waiting for user interaction...
+
+        </div>
+
+        <button onclick="phish()">
+            🎣 CLICK TO VERIFY IDENTITY
+        </button>
+
+    </div>
+
+
+    <!-- SUCCESS PAGE -->
+
+    <div class="terminal" id="success">
+
+        <div style="font-size: 55px;">
+            🎣
+        </div>
+
+        <div class="success-title">
+            PHISHING SUCCESSFUL
+        </div>
+
+        <div class="arabic">
+            عيد ميلاد سعيد ❤️🎂
+        </div>
+
+        <div class="message">
+
+            <i>You've been successfully phished.</i>
+
+            <br><br>
+
+            Don't worry, no data was stolen.<br>
+            <b>Only your heart. 😂❤️</b>
+
+        </div>
+
+        <div class="happy">
+            Happy birthday Mallouka 🥳❤️
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function phish() {
+
+            // Cache la page phishing
+            document.getElementById("phishing").style.display = "none";
+
+            // Affiche la surprise
+            document.getElementById("success").style.display = "block";
+
+            // Fait tomber des coeurs
+            for (let i = 0; i < 50; i++) {
+
+                let heart = document.createElement("div");
+
+                heart.className = "heart";
+
+                const hearts = ["❤️", "💗", "💖", "🥳", "💕"];
+
+                heart.innerHTML =
+                    hearts[Math.floor(Math.random() * hearts.length)];
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+                heart.style.animationDuration =
+                    (3 + Math.random() * 4) + "s";
+
+                heart.style.animationDelay =
+                    Math.random() * 2 + "s";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
